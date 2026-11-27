@@ -1,0 +1,52 @@
+lobby:
+  world: ""
+  x: 0
+  y: 64
+  z: 0
+  yaw: 0
+  pitch: 0
+hub:
+  world: ""
+  x: 0
+  y: 64
+  z: 0
+  yaw: 0
+  pitch: 0
+mana:
+  max: 100
+  regen-amount: 5
+  regen-period-ticks: 40
+economy:
+  coins-per-kill: 5
+  coins-per-win: 50
+  xp-per-kill: 10
+  xp-per-win: 30
+shop:
+  wind_wand: 200
+  void_wand: 500
+  storm_wand: 750
+  dragon_wand: 1200
+  time_wand: 900
+  meteor_wand: 1500
+powerups:
+  interval-ticks: 300
+  lifetime-ticks: 6000
+cosmetics:
+  kill:
+    soul: 150
+    flame: 150
+    frost: 200
+    void: 300
+    gold: 250
+  trail:
+    flame: 100
+    hearts: 100
+    notes: 120
+    magic: 150
+    souls: 200
+boss:
+  coins-per-killer: 50
+  xp-per-killer: 30
+setup:
+  world-name: magicwars_maps
+  maps-per-mode: 2
