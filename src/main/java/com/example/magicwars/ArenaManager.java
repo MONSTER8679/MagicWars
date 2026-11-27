@@ -1,12 +1,9 @@
 package com.example.magicwars;
 
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Player;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -26,10 +23,9 @@ public class ArenaManager {
 
     public List<Arena> all() { return arenas; }
 
-    /** إنشاء عالم الفراغ للملاعب (مرة واحدة) */
+    /** إنشاء عالم الفراغ للملاعب (مرة واحدة) — v6.1: إزالة WorldCreatorOptions غير الصالح */
     public void createWorld(String name, boolean loadIfExists) {
         if (Bukkit.getWorld(name) != null) return;
-        WorldCreatorOptions options = new WorldCreatorOptions(name);
         Bukkit.createWorld(new org.bukkit.WorldCreator(name)
                 .environment(World.Environment.NORMAL)
                 .generator(new VoidGenerator()));
