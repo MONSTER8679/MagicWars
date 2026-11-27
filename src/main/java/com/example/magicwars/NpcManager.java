@@ -2,7 +2,6 @@ package com.example.magicwars;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Interaction;
@@ -20,7 +19,7 @@ public class NpcManager implements Listener {
 
     public enum NpcType {
         ENTER_GAME("⚔ دخول الجيم"),
-        MODE_SOLO("单人 سولو 1v1"),
+        MODE_SOLO("سولو 1v1"),
         MODE_DUO("دو 2v2"),
         MODE_QUAD("كواد 4v4"),
         LOBBY("العودة للوبي");
