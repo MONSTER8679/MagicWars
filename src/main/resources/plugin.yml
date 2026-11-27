@@ -1,0 +1,36 @@
+name: MagicWars
+version: 6.1.0
+main: com.example.magicwars.MagicWarsPlugin
+api-version: '1.21'
+author: Mosa
+description: حروب سحرية - تركيب كامل بأمر واحد، ماندالا، بوس، اقتصاد، مستحضرات، مكافآت يومية
+
+commands:
+  mw:
+    description: الأسلحة السحرية والطاقة
+    usage: /mw give <player> <wand> | list | mana <player>
+  mwadmin:
+    description: إدارة البلوقن
+    permission: magicwars.admin
+    usage: /mwadmin setup | setlobby | sethub | npc <type> | createworld <name> | genmap <mode> <count> [world] | arenas | boss
+  play:
+    description: الانضمام لطابور نمط
+    usage: /play <solo|duo|quad>
+  lobby:
+    description: العودة للوبي
+  shop:
+    description: متجر السحر
+  book:
+    description: كتاب السحر - تفعيل الأسلحة
+  stats:
+    description: إحصائياتك
+  daily:
+    description: المكافأة اليومية
+  killeffect:
+    description: تأثيرات القتل - list | buy | select | off
+  trail:
+    description: آثار المشي - list | buy | select | off
+
+permissions:
+  magicwars.admin:
+    default: op
