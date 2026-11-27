@@ -15,7 +15,8 @@ public class PlayerListener implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         plugin.manaManager().refill(e.getPlayer());
-        plugin.lobbyManagerStart();   // (تشغيل مهام الطاقة عند أول دخول إذا لم تبدأ)
+        if (plugin.lobby().lobby() != null && !e.getPlayer().hasPlayedBefore())
+            e.getPlayer().teleport(plugin.lobby().lobby());
     }
 
     @EventHandler
