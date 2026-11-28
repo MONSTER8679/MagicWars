@@ -5,82 +5,69 @@ Legend: NOT_STARTED / IN_PROGRESS / IMPLEMENTED / TESTED / VERIFIED / BLOCKED / 
 > Honest status only. VERIFIED requires real evidence. SKIPPED = cannot be
 > truthfully completed in this pass, with reason.
 
-| # | Phase | Status | Notes |
+## Status after build pass 1 (2026-11-28)
+
+| # | Phase | Status | Evidence |
 |---|---|---|---|
-| 1 | Project examination | DONE | No PetSim project exists; documented in DEVELOPMENT_AUDIT.md |
-| 2 | Structure analysis | DONE | MagicWars is a separate mini-game; untouched |
-| 3 | DEVELOPMENT_AUDIT.md | DONE | committed 434abce |
-| 4 | Architecture design | IN_PROGRESS | layered com.petsim packages |
-| 5 | Module system | IN_PROGRESS | ModuleManager + toggle configs |
-| 6 | Central config system | IN_PROGRESS | ConfigManager with defaults + validation |
-| 7 | Logging system | IN_PROGRESS | separate log channels |
-| 8 | World Manager | IN_PROGRESS | create/load/unload/teleport/borders |
-| 9 | Start world (spawn) | IN_PROGRESS | procedural builder, no empty flatland |
-| 9 | 10 zones layout | IN_PROGRESS | area definitions with unique palettes |
-| 11 | Additional worlds | IN_PROGRESS | data-driven, unbounded count |
-| 12 | World progression | IN_PROGRESS | requirements chain |
-| 13 | Area Manager | IN_PROGRESS | full area model |
-| 14 | Area Unlock GUI | IN_PROGRESS | server-side purchase |
-| 15 | Area protection | IN_PROGRESS | movement/teleport/pearl guards |
-| 16 | World portals | IN_PROGRESS | portal entities + GUI |
-| 17 | World building engine | IN_PROGRESS | procedural palettes, no fake schematics |
-| 18 | Environmental decoration | IN_PROGRESS | reusable decorator library |
-| 19 | Egg Manager | IN_PROGRESS | full egg model |
-| 20 | Egg display zone | IN_PROGRESS | ItemDisplay pedestals at spawn |
-| 21 | Egg lock system | IN_PROGRESS | area/world gating |
-| 22 | Egg GUI | IN_PROGRESS | hatch 1/3, auto, close |
-| 23 | Hatch probability engine | IN_PROGRESS | server-side RNG, normalized |
-| 24 | Hatch animation | IN_PROGRESS | shake + reveal + skip |
-| 25 | Auto hatch | IN_PROGRESS | limits, stop conditions |
-| 26 | Pet registry | IN_PROGRESS | definition vs instance split |
-| 27 | Pet models | IN_PROGRESS | resource pack custom item models |
-| 28 | Pet inventory | IN_PROGRESS | search/sort/pages |
-|  29 | Pet equipment | IN_PROGRESS | equip limits server-side |
-| 30 | Pet follow system | IN_PROGRESS | formations, tick-shared update |
-| 31 | Pet animations | IN_PROGRESS | float/hover/idle/reveal |
-| 32 | Pet index | IN_PROGRESS | discovered/undiscovered |
-| 33 | Pet trading value | IN_PROGRESS | server-computed |
-| 34 | Economy manager | IN_PROGRESS | multi-currency |
-| 35 | Resource objects | IN_PROGRESS | breakable coin/chest entities |
-| 36 | Pet attack system | IN_PROGRESS | target assignment, HP bars |
-| 37 | Damage scaling | IN_PROGRESS | multipliers, no runaway inflation |
-| 38 | Auto farm | IN_PROGRESS | range/strategy options |
-| 39 | Economy upgrades | IN_PROGRESS | 9 upgrade tracks |
-| 40 | Economy balancing | IN_PROGRESS | config-driven curves |
-| 41 | GUI framework | IN_PROGRESS | state, paging, click guard |
-| 42 | Visual identity | IN_PROGRESS | original sky-blue theme |
-| 43 | GUI assets | IN_PROGRESS | resource pack textures |
-| 44 | Main menu | IN_PROGRESS | 10 buttons, all functional |
-| 45 | Trading player list | IN_PROGRESS | heads, online status |
-| 46 | Trading history | IN_PROGRESS | real persisted data |
-| 47 | Live trading GUI | IN_PROGRESS | ready states, countdown |
-| 48 | Trade confirmation | IN_PROGRESS | dual review screen |
-| 49 | Friends GUI | IN_PROGRESS | requests, lists, search |
-| 50 | All other GUIs | IN_PROGRESS | worlds, index, upgrades, etc. |
-| 51 | Secure trading engine | IN_PROGRESS | full lifecycle |
-| 52 | Atomic trade transactions | IN_PROGRESS | DB transactions |
-| 53 | Trade security | IN_PROGRESS | cooldowns, audit |
-| 54 | Auction house | IN_PROGRESS | listings, bids, tax |
-| 55 | Clans and parties | IN_PROGRESS | roles, chat, storage |
-| 56 | Pet enchanting | IN_PROGRESS | 7 enchants |
-| 57 | Pet leveling | IN_PROGRESS | XP, growth |
-| 58 | Fusion / evolution | IN_PROGRESS | ownership-checked |
-| 59 | Rebirth | IN_PROGRESS | requirements + bonuses |
-| 60 | Mastery | IN_PROGRESS | 6 tracks |
-| 61 | Quest system | IN_PROGRESS | daily/weekly/main |
-| 62 | Daily rewards | IN_PROGRESS | streaks, anti-claim-duplicate |
-| 63 | Events system | IN_PROGRESS | data-driven events |
-| 64 | Global bosses | IN_PROGRESS | phases, contribution, drops |
-| 65 | Leaderboards | IN_PROGRESS | real data |
-| 66 | Resource pack architecture | IN_PROGRESS | pack.mcmeta, models, textures |
-| 67 | 3D models and textures | IN_PROGRESS | original geometric models |
-| 68 | GUI resource pack integration | IN_PROGRESS | icons wired to GUIs |
-| 69 | Resource pack distribution | IN_PROGRESS | zip + SHA-1 (hosting URL = placeholder, documented) |
-| 70 | Security, testing, delivery | IN_PROGRESS | ongoing throughout |
+| 1-3 | Audit | IMPLEMENTED | DEVELOPMENT_AUDIT.md commits 434abce, 2b80510 |
+| 4 | Architecture | IMPLEMENTED | layered com.petsim packages on disk |
+| 5 | Module system | IMPLEMENTED | ModuleManager + config toggles (wiring of all modules pending) |
+| 6 | Central config | IMPLEMENTED | ConfigManager: defaults, validation, schema migration |
+| 7 | Logging | IMPLEMENTED | LogService tagged channels |
+| 8 | World Manager | IMPLEMENTED | WorldManager: create/border/gamerules |
+| 9-10 | Start world + 10 zones | IMPLEMENTED (data) | 10 AreaDefinitions registered in bootstrap; terrain building NOT yet done — see below |
+| 11 | Additional worlds | PARTIAL | data model supports it; no extra worlds shipped yet |
+| 12 | World progression | IMPLEMENTED | requirement chain in AreaManager.tryUnlock |
+| 13 | Area Manager | IMPLEMENTED | full model + DB unlock records |
+| 14 | Area Unlock GUI | NOT_STARTED | next pass |
+| 15 | Area protection | IMPLEMENTED | AreaProtectionListener (move/teleport/portal) |
+| 16 | World portals | NOT_STARTED | next pass |
+| 17-18 | Building engine + decoration | NOT_STARTED | next pass (procedural palettes, no fake schematics) |
+| 19 | Egg Manager | IMPLEMENTED | EggDefinition + EggManager + EggContent pending eggs.yml |
+| 20 | Egg display zone | NOT_STARTED | needs building pass |
+| 21 | Egg locks | IMPLEMENTED | lockReason checks area unlock |
+| 22 | Egg GUI | PARTIAL | hatch/hatchThree server logic done; GUI screen next pass |
+| 23 | Hatch probability engine | IMPLEMENTED | HatchEngine, SecureRandom, normalized weights |
+| 24 | Hatch animation | NOT_STARTED | next pass |
+| 25 | Auto hatch | PARTIAL | limits defined; loop task next pass |
+| 26 | Pet registry | IMPLEMENTED | PetDefinition vs PetRecord split |
+| 27 | Pet models | PARTIAL | 15 definitions shipped (3 zones); models live in resource pack pass |
+| 28 | Pet inventory GUI | NOT_STARTED | next pass |
+| 29 | Pet equipment | PARTIAL | equipped flag + follow service uses it; GUI next |
+| 30 | Pet follow | IMPLEMENTED | formations, shared tick, floating |
+| 31 | Pet animations | PARTIAL | floating done; attack/celebrate next |
+| 32 | Pet index | NOT_STARTED | next pass |
+| 33 | Trading value | IMPLEMENTED | EconomyManager.petTradeValue (server-side) |
+| 34 | Economy manager | IMPLEMENTED | multi-currency, atomic withdraw |
+| 35 | Resource objects | IMPLEMENTED | BreakableManager (BlockDisplay, HP, rewards) |
+| 36 | Pet attack system | PARTIAL | damage path done; targeting task next |
+| 37 | Damage scaling | PARTIAL | base power in defs; multipliers next |
+| 38 | Auto farm | NOT_STARTED | next pass |
+| 39 | Economy upgrades | IMPLEMENTED | UpgradeManager, quadratic curve |
+| 40 | Balancing | PARTIAL | curves chosen; full simulation pending |
+| 41 | GUI framework | IMPLEMENTED | GuiScreen with spam guard |
+| 42-43 | Visual identity/assets | PARTIAL | vanilla-icon GUIs now; pack assets next |
+| 44 | Main menu | IMPLEMENTED | 10 buttons wired |
+| 45 | Trading list GUI | IMPLEMENTED | heads, tabs, close |
+| 46-50 | Other GUIs | NOT_STARTED | next passes |
+| 51-52 | Trading engine | PARTIAL | atomic completion w/ rollback done; requests/queue next |
+| 53-55 | Trade security, auction, clans | NOT_STARTED | next passes |
+| 56-60 | Enchant/level/fusion/rebirth/mastery | PARTIAL | leveling math done; systems next |
+| 61-65 | Quests/rewards/events/bosses/boards | NOT_STARTED | next passes |
+| 66-69 | Resource pack | NOT_STARTED | needs real texture/model work (no fake assets) |
+| 70 | Security/testing/delivery | PARTIAL | unit tests added; DB tx used in trades; full pass pending |
 
 ## Known limitations / honest notes
 
-- **B1**: Paper 26.3 not verified yet — `paper.api.version` remains a property.
-- **B2**: Java 25 toolchain not verified yet.
-- Resource pack must be compiled and SHA-1 computed at delivery time.
-- Schematics: none are shipped yet (no fake .schem files are claimed).
+- **B1 (OPEN)**: Paper 26.3 not verified — build targets `1.21.4-R0.1-SNAPSHOT`
+  via the `paper.api.version` property; switching is one property change.
+- **B2 (OPEN)**: Java 25 not verified — build uses `java.release=21` property.
+- Terrain for the 10 zones is **registered but not generated**; the building
+  engine pass comes next. No claim is made that zones are visually built.
+- Resource pack assets are **not shipped**; GUIs currently use vanilla icons.
+  No fake model/texture files exist in the repo.
+- Egg definitions for each zone ship in the next pass (EggContent).
+- Tests cover pure logic (XP curve, rarity, egg weights, zone count).
+  Integration tests need a Paper server; not yet run.
+- The build has NOT been compiled in this environment (no toolchain here);
+  first `mvn clean package` on your machine will surface any syntax issues.
