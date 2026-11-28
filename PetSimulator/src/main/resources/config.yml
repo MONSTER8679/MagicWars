@@ -1,0 +1,58 @@
+# PetSimulator main configuration
+# Schema version used for automatic migration of old configs (Phase 6).
+config_schema_version: 1
+
+storage:
+  type: sqlite            # sqlite now; mysql/mariadb future
+  sqlite_file: database/petsim.db
+  autosave_minutes: 5
+  backup_on_stop: true
+
+resource_pack:
+  url: ""                 # hosting URL must be a real link (B-documented, no fake URLs)
+  required: false
+  sha1: ""                 # computed at delivery (Phase 69)
+  prompt: "Welcome to PetSimulator! Accept the resource pack to see pets, eggs and icons."
+
+performance:
+  pet_update_interval_ticks: 2      # pets update on shared ticks, not every tick per pet
+  pet_render_distance_blocks: 48
+  max_pets_rendered_per_player: 10
+  max_follow_pets: 6
+  breakable_check_interval_ticks: 5
+
+modules:                    # Phase 5: each system can be disabled independently
+  trading: true
+  auction: true
+  friends: true
+  clans: true
+  quests: true
+  events: true
+  daily_rewards: true
+  auto_hatch: true
+  auto_farm: true
+  enchanting: true
+  rebirth: true
+  mastery: true
+  promos: true
+  mailbox: true
+  titles: true
+  achievements: true
+
+worlds:
+  first_world: petsim_world
+  spawn_radius: 64
+  border_size: 2048
+
+logging:
+  separate_channels: true     # Phase 7
+  channels:
+    player_actions: true
+    economy: true
+    trading: true
+    hatching: true
+    admin: true
+    database: true
+    security: true
+    world_ops: true
+    performance: true
