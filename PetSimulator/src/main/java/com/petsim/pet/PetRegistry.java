@@ -30,7 +30,15 @@ public final class PetRegistry {
     public List<PetDefinition> byArea(String worldId, String areaId) {
         List<PetDefinition> out = new ArrayList<>();
         for (PetDefinition d : definitions.values()) {
-            if (d.worldId().equals(worldId) && d.areaId().equals(worldId)) out.add(d);
+            if (d.areaId().equals(areaId)) out.add(d);
+        }
+        return out;
+    }
+
+    public List<PetDefinition> byWorld(String worldId) {
+        List<PetDefinition> out = new ArrayList<>();
+        for (PetDefinition d : definitions.values()) {
+            if (d.worldId().equals(worldId)) out.add(d);
         }
         return out;
     }
@@ -43,6 +51,10 @@ public final class PetRegistry {
 
     public PetRecord instance(UUID petUuid) {
         return instances.get(petUuid);
+    }
+
+    public void replaceInstance(PetRecord record) {
+        instances.put(record.uuid(), record);
     }
 
     public void removeInstance(UUID petUuid) {
