@@ -1,0 +1,17 @@
+name: PetSimulator
+version: 0.1.0-SNAPSHOT
+main: com.petsim.PetSimPlugin
+api-version: '1.21'
+authors: [ MONSTER8679 ]
+description: Ultimate Pet Simulator - worlds, pets, economy, trading.
+commands:
+  petsim:
+    description: PetSimulator main command
+    usage: /petsim help
+    aliases: [ ps ]
+    permission: petsim.use
+permissions:
+  petsim.use:
+    default: true
+  petsim.admin:
+    default: op
